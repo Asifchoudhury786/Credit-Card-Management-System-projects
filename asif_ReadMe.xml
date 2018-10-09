@@ -1,0 +1,66 @@
+Credit Card Management System
+
+## The Credit Card System  enables users to perform transactions such as view monthly bills, sort by transaction type to perform data analysis if necessary. 
+
+
+## Programing languages and tech tools utilized.
+    1) Java
+    2) JDBC
+    3) MySQL
+    4) Hadoop
+    5) Hive
+    6) Sqoop
+    7) Oozie
+
+##  Follow these steps to use the software (Java Part):
+    * Fork the repo into your github account 
+    * Clone the repo
+    * Open up Eclipse IDE
+    * Open up the cloned repo in your favorite code editor
+    * Right Click on the root directory of the project and find 'Build Path' 
+            => Click on Build Path               
+            => Then => Click 'Configure Build Path' and then 
+            => Click mysql-connector-java -jar file. 
+            => Click 'Apply and Close'
+    * You now have the software in your computer
+##  How to run the Java program: 
+    * To run the java program, Click on the software file
+    * Go to src file => runner => Main
+    * Now run the entire program or uncomment the functions call to see only that particular 
+        function in action   
+
+
+## ETL Part in Hadoop Framework
+
+    # Update the database in MySQL workbench
+        * First, update the MySQL workbench in VM by running CDW.sql script 
+        * To do so, go to MySQL => Click on 'File' => Scroll down to 'Run SQL Script' and Run it
+       Now, Your database is updated and ready for the Sqoop import 
+    * Write Sqoop queries to import data from the database in MySQL to HDFS 
+    
+## HIVE    
+    * When you have data imported in HDFS, create Hive tables to store the data in HDFS
+    * Create Hive tables in Hive view
+    * Load the data in Hive tables
+    * Now create partition tables in Hive based on what makes more sense to you
+
+
+## Sqoop Metastore
+    -Optimize the sqoop queries by creating sqoop jobs in sqoop metastore for better performence
+    - Run sqoop metastore in Terminal from root by this command: sqoop-metastore
+    - Create sqoop jobs for the data import
+    - Sqoop jobs shine when we need to bring only the new data by incremental sqoop jobs from the
+        database into HDFS and Hive
+
+## Oozie Scheduler
+    * Use Oozie to schedule the jobs for specified times
+    * Create Workflow.xml, Coordinator.xml and properties files in your local machine
+    * Workflow files will have sqoop jobs and hive tables scripts and the paths -- each sqoop 
+        jobs and hive scripts will be in a separate action tags
+    * Add java-json.jar file to HDFS (sometimes it's needed) and give the path where you're saving 
+        it in HDFS in the Workflow.xml file. It should be included in Action tags. 
+    * Upload Workflow.xml and Coordinator.xml files on HDFS
+    * Create properties files to call the coordinator files located on HDFS to run the Workflow
+    * Transfer properties file from the local machine (your computer) to the Linux machine by 
+        using WinSCP software
+    * Now run oozie jobs in Terminal, either from maria_dev or root
